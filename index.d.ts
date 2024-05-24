@@ -1,7 +1,0 @@
-const Umeng = {
-
-}
-
-export {
-    Umeng
-}
