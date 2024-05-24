@@ -82,9 +82,9 @@ dependencies {
   // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
-    // 友盟基础组件库（所有友盟业务SDK都依赖基础组件库
-    implementation  'com.umeng.umsdk:common:+'// 必选
-    implementation  'com.umeng.umsdk:asms:+'// 必选
-    implementation 'com.umeng.umsdk:uyumao:+' // 高级运营分析功能依赖库，使用U-App卸载分析、开启反作弊能力请务必集成。common需搭配v9.6.3及以上版本，asms需搭配v1.7.0及以上版本。需更新隐私声明。
+  // 友盟基础组件库（所有友盟业务SDK都依赖基础组件库
+  implementation  'com.umeng.umsdk:common:+'// 必选
+  implementation  'com.umeng.umsdk:asms:+'// 必选
+  implementation 'com.umeng.umsdk:uyumao:+' // 高级运营分析功能依赖库，使用U-App卸载分析、开启反作弊能力请务必集成。common需搭配v9.6.3及以上版本，asms需搭配v1.7.0及以上版本。需更新隐私声明。
 }
 
