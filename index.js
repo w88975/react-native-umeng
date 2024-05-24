@@ -21,6 +21,9 @@ const Umeng = {
     onEventWithMap(evnetId, map) {
         UModule.onEventWithMap(evnetId, map)
     },
+    onEventObject(evnetId, object) {
+        UModule.onEventObject(evnetId, object)
+    },
     onEventWithMapAndCount(evnetId, map, count) {
         UModule.onEventWithMapAndCount(evnetId, map)
     },
