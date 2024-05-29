@@ -16,34 +16,27 @@ Pod::Spec.new do |s|
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
 
-  s.requires_arc = true
 
-  s.frameworks = "UIKit",
-  s.frameworks = "Foundation",
-  s.frameworks = "CFNetwork",
-  s.frameworks = "SystemConfiguration",
-  s.frameworks = "QuartzCore",
-  s.frameworks = "CoreGraphics",
-  s.frameworks = "CoreMotion",
-  s.frameworks = "CoreTelephony",
-  s.frameworks = "CoreText",
-  s.frameworks = "WebKit"
+  require 'find'
+  frameworks_root = 'ios/frameworks'
+  frameworks = []
 
-  s.dependency "React-Core"
-  
-  s.resource = 'ios/AlipaySDK.bundle'
-  # s.vendored_libraries = "libAlipaySDK.a"
-  # s.source_files  = "AlipaySDKiOS/AlipaySDK.framework/**/*"
-  s.vendored_frameworks = 'ios/AlipaySDK.framework'
-  s.library = "c++", "z"
+  Find.find(frameworks_root) do |path|
+    frameworks.push(path) if path.end_with?('.framework')
+  end
 
+  s.vendored_frameworks = frameworks
+  s.frameworks = ['CoreTelephony', 'SystemConfiguration']
+  s.libraries = ['z', 'sqlite3']
   # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.
   # See https://github.com/facebook/react-native/blob/febf6b7f33fdb4904669f99d795eba4c0f95d7bf/scripts/cocoapods/new_architecture.rb#L79.
   if respond_to?(:install_modules_dependencies, true)
     install_modules_dependencies(s)
   else
+  s.dependency "React-Core"
+  # s.dependency "UMCommon"
+  # s.dependency "UMDevice"
   
-
   # Don't install the dependencies when we run `pod install` in the old architecture.
   if ENV['RCT_NEW_ARCH_ENABLED'] == '1' then
     s.compiler_flags = folly_compiler_flags + " -DRCT_NEW_ARCH_ENABLED=1"
@@ -57,6 +50,7 @@ Pod::Spec.new do |s|
     s.dependency "RCTRequired"
     s.dependency "RCTTypeSafety"
     s.dependency "ReactCommon/turbomodule/core"
-   end
+  end
   end    
 end
+

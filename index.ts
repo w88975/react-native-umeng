@@ -32,7 +32,10 @@ const Umeng = {
      * @param app_key 友盟appKey
      * @param channel 渠道名称
      */
-    initSDK: (app_key: string, channel: string): void => {
+    initSDK: async (app_key: string, channel: string): Promise<string | void> => {
+        if (Platform.OS == 'ios') {
+            return await UModule.initUMSdk(app_key, channel)
+        }
         UModule.initUMSdk(app_key, channel)
     },
 
